@@ -1,4 +1,4 @@
-class IUserService {
+export default class IUserService {
   async register(userData) {
     throw new Error('Method not implemented');
   }
@@ -19,5 +19,3 @@ class IUserService {
     throw new Error('Method not implemented');
   }
 }
-
-module.exports = IUserService;

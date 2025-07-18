@@ -1,7 +1,8 @@
 // src/controllers/UserController.js
 import BaseController from './BaseController.js';
 import UserService from '../services/UserService.js';
-import { createUserSchema, updateUserSchema } from '../dtos/CreateUserDto.js';
+import { createUserSchema } from '../dtos/CreateUserDto.js';
+import { updateUserSchema } from '../dtos/UpdateUserDto.js';
 import logger from '../config/logger.js';
 
 class UserController extends BaseController {

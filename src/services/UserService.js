@@ -1,11 +1,11 @@
-// src/services/UserService.js
-const BaseService = require('./BaseService');
-const IUserService = require('../interfaces/IUserService');
-const UserRepository = require('../repositories/UserRepository');
-const jwt = require('jsonwebtoken');
-const twilio = require('twilio');
-const config = require('../config');
-const logger = require('../config/logger');
+
+import BaseService from './BaseService.js';
+import IUserService from '../interfaces/IUserService.js';
+import UserRepository from '../repositories/UserRepository.js';
+import jwt from 'jsonwebtoken';
+import twilio from 'twilio';
+import { config } from '../config/index.js';
+import logger from '../config/logger.js';
 
 class UserService extends BaseService {
   constructor() {
@@ -138,8 +138,8 @@ class UserService extends BaseService {
   generateToken(userId) {
     return jwt.sign(
       { userId },
-      config.jwt.secret,
-      { expiresIn: config.jwt.expiresIn }
+      config.jwtSecret,
+      { expiresIn: config.jwtExpiresIn }
     );
   }
 
@@ -152,4 +152,4 @@ class UserService extends BaseService {
   }
 }
 
-module.exports = UserService;
+export default UserService;

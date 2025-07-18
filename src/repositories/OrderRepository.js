@@ -1,6 +1,6 @@
-// src/repositories/OrderRepository.js
-const BaseRepository = require('./BaseRepository');
-const Order = require('../models/Order');
+
+import BaseRepository from './BaseRepository.js';
+import Order from '../models/Order.js';
 
 class OrderRepository extends BaseRepository {
   constructor() {
@@ -90,4 +90,4 @@ class OrderRepository extends BaseRepository {
   }
 }
 
-module.exports = OrderRepository;
+export default OrderRepository;

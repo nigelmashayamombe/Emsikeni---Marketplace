@@ -1,9 +1,9 @@
-// src/services/ReviewService.js
-const BaseService = require('./BaseService');
-const ReviewRepository = require('../repositories/ReviewRepository');
-const OrderRepository = require('../repositories/OrderRepository');
-const UserRepository = require('../repositories/UserRepository');
-const logger = require('../config/logger');
+
+import BaseService from './BaseService.js';
+import ReviewRepository from '../repositories/ReviewRepository.js';
+import OrderRepository from '../repositories/OrderRepository.js';
+import UserRepository from '../repositories/UserRepository.js';
+import logger from '../config/logger.js';
 
 class ReviewService extends BaseService {
   constructor() {
@@ -90,4 +90,4 @@ class ReviewService extends BaseService {
   }
 }
 
-module.exports = ReviewService;
+export default ReviewService;

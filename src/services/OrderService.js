@@ -1,9 +1,9 @@
-// src/services/OrderService.js
-const BaseService = require('./BaseService');
-const OrderRepository = require('../repositories/OrderRepository');
-const ProductRepository = require('../repositories/ProductRepository');
-const UserRepository = require('../repositories/UserRepository');
-const logger = require('../config/logger');
+
+import BaseService from './BaseService.js';
+import OrderRepository from '../repositories/OrderRepository.js';
+import ProductRepository from '../repositories/ProductRepository.js';
+import UserRepository from '../repositories/UserRepository.js';
+import logger from '../config/logger.js';
 
 class OrderService extends BaseService {
   constructor() {
@@ -176,4 +176,4 @@ class OrderService extends BaseService {
   }
 }
 
-module.exports = OrderService;
+export default OrderService;

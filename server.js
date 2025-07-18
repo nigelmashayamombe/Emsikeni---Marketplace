@@ -19,9 +19,15 @@ mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
 
 // Import routes
 import productRoutes from './src/routes/productRoutes.js';
+import userRoutes from './src/routes/userRoutes.js';
+import orderRoutes from './src/routes/orderRoutes.js';
+import reviewRoutes from './src/routes/reviewRoutes.js';
 
 // Routes
 app.use('/api/products', productRoutes);
+app.use('/api/users', userRoutes);
+app.use('/api/orders', orderRoutes);
+app.use('/api/reviews', reviewRoutes);
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
