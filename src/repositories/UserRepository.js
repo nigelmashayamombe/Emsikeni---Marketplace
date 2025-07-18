@@ -1,10 +1,9 @@
-/ src/repositories/UserRepository.js
-const BaseRepository = require('./BaseRepository');
-const User = require('../models/User');
+import BaseRepository from './BaseRepository.js';
+import Users from '../models/Users.js';
 
-class UserRepository extends BaseRepository {
+export default class UserRepository extends BaseRepository {
   constructor() {
-    super(User);
+    super(Users);
   }
 
   async findByEmail(email) {
@@ -67,5 +66,3 @@ class UserRepository extends BaseRepository {
     );
   }
 }
-
-module.exports = UserRepository;

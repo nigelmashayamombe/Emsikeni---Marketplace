@@ -1,19 +1,20 @@
 // src/services/ProductService.js
-const BaseService = require('./BaseService');
-const ProductRepository = require('../repositories/ProductRepository');
-const UserRepository = require('../repositories/UserRepository');
-const cloudinary = require('cloudinary').v2;
-const config = require('../config');
-const logger = require('../config/logger');
+import BaseService from './BaseService.js';
+import ProductRepository from '../repositories/ProductRepository.js';
+import UserRepository from '../repositories/UserRepository.js';
+//import cloudinaryModule from 'cloudinary';
+//import { config } from '../config/index.js';
+import logger from '../config/logger.js';
+//const cloudinary = cloudinaryModule.v2;
 
 // Configure Cloudinary
-cloudinary.config({
-  cloud_name: config.cloudinary.cloudName,
-  api_key: config.cloudinary.apiKey,
-  api_secret: config.cloudinary.apiSecret
-});
+// cloudinary.config({
+//   cloud_name: config.cloudinary.cloudName,
+//   api_key: config.cloudinary.apiKey,
+//   api_secret: config.cloudinary.apiSecret
+// });
 
-class ProductService extends BaseService {
+export default class ProductService extends BaseService {
   constructor() {
     super(new ProductRepository());
     this.userRepository = new UserRepository();
@@ -167,4 +168,4 @@ class ProductService extends BaseService {
   }
 }
 
-module.exports = ProductService;
+// No export needed here, class is exported as default above

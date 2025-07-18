@@ -1,6 +1,7 @@
-const Joi = require('joi');
 
-const createProductSchema = Joi.object({
+import Joi from 'joi';
+
+export const createProductSchema = Joi.object({
   name: Joi.string().min(3).max(200).required(),
   description: Joi.string().min(10).max(2000).required(),
   category: Joi.string().valid(
@@ -21,4 +22,5 @@ const createProductSchema = Joi.object({
   negotiable: Joi.boolean().default(false)
 });
 
-module.exports = { createProductSchema };
+
+// Already exported above as named export

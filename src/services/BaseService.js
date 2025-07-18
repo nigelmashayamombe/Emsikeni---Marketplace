@@ -1,5 +1,5 @@
 // src/services/BaseService.js
-class BaseService {
+export default class BaseService {
   constructor(repository) {
     this.repository = repository;
   }
@@ -36,5 +36,3 @@ class BaseService {
     return doc;
   }
 }
-
-module.exports = BaseService;

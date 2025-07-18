@@ -1,4 +1,4 @@
-class IRepository {
+export default class IRepository {
   async create(data) {
     throw new Error('Method not implemented');
   }
@@ -19,5 +19,3 @@ class IRepository {
     throw new Error('Method not implemented');
   }
 }
-
-module.exports = IRepository;

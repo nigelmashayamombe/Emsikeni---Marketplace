@@ -1,8 +1,8 @@
 // src/controllers/UserController.js
-const BaseController = require('./BaseController');
-const UserService = require('../services/UserService');
-const { createUserSchema, updateUserSchema } = require('../dtos/CreateUserDto');
-const logger = require('../config/logger');
+import BaseController from './BaseController.js';
+import UserService from '../services/UserService.js';
+import { createUserSchema, updateUserSchema } from '../dtos/CreateUserDto.js';
+import logger from '../config/logger.js';
 
 class UserController extends BaseController {
   constructor() {
@@ -141,4 +141,4 @@ class UserController extends BaseController {
   });
 }
 
-module.exports = UserController;
+export default UserController;

@@ -1,8 +1,7 @@
-// src/repositories/ProductRepository.js
-const BaseRepository = require('./BaseRepository');
-const Product = require('../models/Product');
+import BaseRepository from './BaseRepository.js';
+import Product from '../models/Product.js';
 
-class ProductRepository extends BaseRepository {
+export default class ProductRepository extends BaseRepository {
   constructor() {
     super(Product);
   }
@@ -102,5 +101,3 @@ class ProductRepository extends BaseRepository {
     }, {});
   }
 }
-
-module.exports = ProductRepository;

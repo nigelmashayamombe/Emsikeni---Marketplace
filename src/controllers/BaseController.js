@@ -1,7 +1,7 @@
 // src/controllers/BaseController.js
-const logger = require('../config/logger');
+import logger from '../config/logger.js';
 
-class BaseController {
+export class BaseController {
   constructor(service) {
     this.service = service;
   }
@@ -118,4 +118,4 @@ class BaseController {
   }
 }
 
-module.exports = BaseController;
+export default BaseController;

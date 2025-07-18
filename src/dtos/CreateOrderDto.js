@@ -1,6 +1,7 @@
-const Joi = require('joi');
 
-const createOrderSchema = Joi.object({
+import Joi from 'joi';
+
+export const createOrderSchema = Joi.object({
   productId: Joi.string().required(),
   quantity: Joi.number().integer().min(1).default(1),
   deliveryMethod: Joi.string().valid('delivery', 'pickup').required(),
@@ -18,4 +19,5 @@ const createOrderSchema = Joi.object({
   message: Joi.string().max(500).optional()
 });
 
-module.exports = { createOrderSchema };
+
+// Already exported above as named export

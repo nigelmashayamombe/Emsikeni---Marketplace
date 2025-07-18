@@ -1,7 +1,6 @@
-// src/repositories/BaseRepository.js
-const IRepository = require('../interfaces/IRepository');
+import IRepository from '../interfaces/IRepository.js';
 
-class BaseRepository extends IRepository {
+export default class BaseRepository extends IRepository {
   constructor(model) {
     super();
     this.model = model;
@@ -69,5 +68,3 @@ class BaseRepository extends IRepository {
     return await this.model.countDocuments(query);
   }
 }
-
-module.exports = BaseRepository;
