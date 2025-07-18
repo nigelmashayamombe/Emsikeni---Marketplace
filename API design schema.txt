@@ -1,0 +1,236 @@
+ API Endpoints
+
+ Authentication Endpoints
+
+
+POST /api/v1/auth/register
+- Request phone registration
+- Body: { phoneNumber }
+- Response: { success, message }
+
+POST /api/v1/auth/verify
+- Verify OTP sent to phone
+- Body: { phoneNumber, otp }
+- Response: { token, user }
+
+POST /api/v1/auth/refresh
+- Refresh authentication token
+- Body: { refreshToken }
+- Response: { token }
+
+POST /api/v1/auth/logout
+- Invalidate current token
+- Response: { success }
+
+
+ User Endpoints
+
+
+GET /api/v1/users/profile
+- Get current user profile
+- Response: { user }
+
+PUT /api/v1/users/profile
+- Update user profile
+- Body: user profile data
+- Response: { success, user }
+
+POST /api/v1/users/profile/image
+- Upload profile image
+- Body: multipart/form-data with image
+- Response: { success, imageUrl }
+
+GET /api/v1/users/:userId
+- Get public user information
+- Response: { user }
+
+GET /api/v1/users/saved-listings
+- Get user's saved listings
+- Response: { listings, total }
+
+POST /api/v1/users/saved-listings/:listingId
+- Save a listing
+- Response: { success }
+
+DELETE /api/v1/users/saved-listings/:listingId
+- Remove a saved listing
+- Response: { success }
+
+
+ Listing Endpoints
+
+
+GET /api/v1/listings
+- Get listings with optional filters
+- Query: { category, subCategory, minPrice, maxPrice, location, distance, sortBy, limit, offset }
+- Response: { listings, total, hasMore }
+
+GET /api/v1/listings/:listingId
+- Get specific listing details
+- Response: { listing, seller }
+
+POST /api/v1/listings
+- Create new listing
+- Body: listing data
+- Response: { success, listingId }
+
+PUT /api/v1/listings/:listingId
+- Update listing
+- Body: updated listing data
+- Response: { success }
+
+DELETE /api/v1/listings/:listingId
+- Delete/deactivate listing
+- Response: { success }
+
+POST /api/v1/listings/:listingId/images
+- Upload listing images
+- Body: multipart/form-data with images
+- Response: { success, imageUrls }
+
+POST /api/v1/listings/:listingId/report
+- Report a listing
+- Body: { reason, description }
+- Response: { success }
+
+GET /api/v1/listings/my-listings
+- Get current user's listings
+- Query: { status, limit, offset }
+- Response: { listings, total }
+
+
+ Category Endpoints
+
+
+GET /api/v1/categories
+- Get all categories with subcategories
+- Response: { categories }
+
+
+ Transaction Endpoints
+
+
+POST /api/v1/transactions
+- Create new transaction
+- Body: { listingId, meetupLocation, deliveryMethod, paymentMethod, notes }
+- Response: { success, transactionId }
+
+GET /api/v1/transactions
+- Get user's transactions (as buyer or seller)
+- Query: { role (buyer/seller), status, limit, offset }
+- Response: { transactions, total }
+
+GET /api/v1/transactions/:transactionId
+- Get transaction details
+- Response: { transaction }
+
+PUT /api/v1/transactions/:transactionId/status
+- Update transaction status
+- Body: { status, reason }
+- Response: { success }
+
+POST /api/v1/transactions/:transactionId/complete
+- Mark transaction as completed
+- Response: { success }
+
+
+ Rating Endpoints
+
+
+POST /api/v1/ratings
+- Submit rating for completed transaction
+- Body: { transactionId, rating, review }
+- Response: { success }
+
+GET /api/v1/ratings/user/:userId
+- Get ratings for a specific user
+- Query: { limit, offset }
+- Response: { ratings, average, total }
+
+POST /api/v1/ratings/:ratingId/report
+- Report inappropriate review
+- Body: { reason }
+- Response: { success }
+
+
+ Messaging Endpoints (Future Implementation)
+
+
+GET /api/v1/conversations
+- Get user conversations list
+- Response: { conversations }
+
+GET /api/v1/conversations/:conversationId/messages
+- Get messages in a conversation
+- Query: { limit, before }
+- Response: { messages, hasMore }
+
+POST /api/v1/conversations/:conversationId/messages
+- Send new message
+- Body: { content, contentType }
+- Response: { success, message }
+
+POST /api/v1/conversations
+- Start new conversation
+- Body: { listingId, initialMessage }
+- Response: { success, conversationId }
+
+PUT /api/v1/conversations/:conversationId/read
+- Mark conversation as read
+- Response: { success }
+
+
+ WhatsApp Integration Endpoints
+
+
+GET /api/v1/whatsapp/link
+- Generate WhatsApp deep link for listing inquiry
+- Query: { listingId }
+- Response: { link }
+
+
+ Admin Endpoints
+
+
+POST /api/v1/admin/auth/login
+- Admin login
+- Body: { username, password }
+- Response: { token, admin }
+
+GET /api/v1/admin/users
+- Get users with filters
+- Query: { userType, status, search, limit, offset }
+- Response: { users, total }
+
+GET /api/v1/admin/users/:userId
+- Get user details with activity
+- Response: { user, listings, transactions }
+
+PUT /api/v1/admin/users/:userId/status
+- Update user status (block/unblock)
+- Body: { status, reason }
+- Response: { success }
+
+GET /api/v1/admin/listings
+- Get listings with filters
+- Query: { status, category, reported, search, limit, offset }
+- Response: { listings, total }
+
+PUT /api/v1/admin/listings/:listingId/status
+- Update listing status
+- Body: { status, reason }
+- Response: { success }
+
+GET /api/v1/admin/reports
+- Get reported content
+- Query: { type, status, limit, offset }
+- Response: { reports, total }
+
+PUT /api/v1/admin/reports/:reportId
+- Update report status and resolution
+- Body: { status, resolution }
+- Response: { success }
+
+GET /api/v1/admin/stats/dashboard
+- Get admin dashboard statistics
+- Response: { users, listings, transactions, ratings }
